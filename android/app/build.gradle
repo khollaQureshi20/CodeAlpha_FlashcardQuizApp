@@ -1,7 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
-
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -70,6 +70,12 @@ def enableProguardInReleaseBuilds = false
  * give correct results when using with locales other than en-US. Note that
  * this variant is about 6MiB larger per architecture than default.
  */
+ project.ext.vectoricons = [
+    iconFontNames: [ 'Ionicons.ttf' ] // Add the fonts you are using here
+]
+
+
+
 def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
