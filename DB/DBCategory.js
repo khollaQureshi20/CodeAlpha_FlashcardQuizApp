@@ -24,8 +24,8 @@ class DBCategory {
   fetchTotalQuestionCategory(callback) {
     this.dbHandler.db.transaction(tx => {
       tx.executeSql(
-        'SELECT c.category AS category_name,COUNT(f.category_id) AS total_questions FROM Flashcards f JOIN Category c ON f.category_id = c.category_id GROUP BY c.category;', 
-        [],
+        'SELECT c.category AS category_name,COUNT(f.category_id) AS total_questions FROM Category c LEFT JOIN  Flashcards f ON c.category_id = f.category_id GROUP BY  c.category',
+       [],
         (_, { rows }) => {
           const categories = rows.raw();
           callback(categories);
